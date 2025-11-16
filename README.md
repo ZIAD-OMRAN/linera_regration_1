@@ -1,77 +1,97 @@
-Medical Charge Prediction using Linear Regression
-Project Overview
-This project aims to predict individual medical insurance charges using linear regression. The analysis is conducted in a Jupyter Notebook (linear_regration_1.ipynb) and involves exploratory data analysis (EDA), feature preprocessing, and model training using scikit-learn. The primary goal is to identify the key factors influencing medical costs and build a predictive model to estimate charges.
+🏥 Medical Charge Prediction Project
+📝 Overview
+This project aims to analyze the factors influencing individual medical insurance charges and builds a linear regression model to predict these costs based on beneficiary attributes.
 
-Dataset
-The project uses the "Medical Charges" dataset, which contains 1338 rows of data on individual insurance beneficiaries.
+📊 Dataset
+The project uses the "Medical Charges" dataset, which is publicly available and contains 1338 records.
 
-Source: Medical Charges CSV on GitHub
+Data Source: Medical Charges CSV
 
-Features
-age: Age of the primary beneficiary.
+Features:
+age: Age of the beneficiary.
 
-sex: Gender (male, female).
+sex: Gender (male/female).
 
-bmi: Body mass index.
+bmi: Body Mass Index.
 
-children: Number of children covered by health insurance.
+children: Number of children.
 
-smoker: Smoking status (yes, no).
+smoker: Smoking status (yes/no).
 
-region: The beneficiary's residential area in the US.
+region: Geographical region of the beneficiary.
 
-charges (Target): Individual medical costs billed by health insurance.
+charges (Target): The medical costs.
 
-Project Workflow
-Data Loading & Inspection: The dataset is loaded from the URL using pandas. Initial checks are performed using .info() and .describe() to understand data types, identify any missing values, and review statistical summaries.
+🚀 Workflow
+The project followed five key stages:
 
-Exploratory Data Analysis (EDA):
+1. Data Loading and Inspection
+Data was loaded using pandas.
 
-Visualized the distributions of age, bmi, and charges using histograms. The charges feature was noted to be positively skewed.
+Initial inspection was performed using .info() and .describe() to understand data types, check for missing values, and get an initial statistical summary.
 
-Analyzed the distributions of categorical features (sex, region, smoker) using count plots.
+2. Exploratory Data Analysis (EDA)
+A visual analysis was conducted to understand patterns and relationships:
 
-Used scatter plots to investigate the relationships between features and the target variable (charges).
+Distributions: Histograms were plotted to understand the distribution of age, bmi, and charges.
 
-Generated a correlation heatmap to quantify the linear relationships between numerical features.
+Categorical Analysis: countplot was used to show the distribution of sex, region, and smoker.
 
-Feature Preprocessing:
+Key Relationships:
 
-Categorical Features: sex, smoker, and region were converted to numerical values using sklearn.preprocessing.LabelEncoder.
+Scatter plots were used to examine the relationship between age vs. charges and bmi vs. charges, with color-coding based on smoker status.
 
-Numerical Features: age, bmi, and children were scaled using sklearn.preprocessing.StandardScaler to normalize their range and ensure they contribute equally to the model.
+A correlation heatmap was generated for all numerical features.
 
-Model Training:
+3. Preprocessing
+To prepare the data for modeling, the following steps were taken:
 
-The fully preprocessed dataset was split into training (90%) and testing (10%) sets.
+Encoding: Categorical columns (sex, smoker, region) were converted to numerical values using LabelEncoder.
+
+Scaling: Numerical features (age, bmi, children) were normalized using StandardScaler to ensure each feature contributed fairly to the model.
+
+4. Modeling
+The data was split into features (X) and the target variable (y).
+
+The dataset was divided into training (90%) and testing (10%) sets using train_test_split.
 
 A LinearRegression model from scikit-learn was trained on the training data.
 
-Model Evaluation:
+5. Evaluation
+The model's performance was evaluated on the test set using:
 
-The trained model was used to make predictions on the test set.
+Mean Squared Error (MSE)
 
-Performance was measured using Root Mean Squared Error (RMSE) to determine the average error of the model's predictions.
+Root Mean Squared Error (RMSE)
 
-Key Findings from EDA
-Smoker status is the most significant predictor of medical charges. The scatter plots clearly show that smokers have substantially higher charges than non-smokers.
+💡 Key Insights from EDA
+Smoker: This is by far the most significant predictor of medical charges.
 
-Age and BMI also show a strong positive correlation with charges.
+Age & BMI: Both show a strong positive correlation with charges. As age or BMI increases, the expected charges also increase.
 
-The relationship between age and charges revealed three distinct clusters, which correspond to non-smokers, smokers, and smokers with a high BMI.
+Charge Distribution: The charges variable is positively skewed, indicating that most individuals have low medical costs, while a few have very high costs.
 
-Model Performance
-Model: Linear Regression
+📈 Final Model Performance
+The model produced the following results on the test data:
 
-Test MSE (Mean Squared Error): 32,402,757.39
+Mean Squared Error (MSE): 32,402,757.39
 
-Test RMSE (Root Mean Squared Error): 5,692.34
+Root Mean Squared Error (RMSE): 5,692.34
 
-Libraries Used
-pandas
+This indicates that the model's predictions are, on average, off by approximately $5,692.
 
-numpy
+🛠️ Tools and Libraries Used
+Python 3
 
+Pandas
+
+NumPy
+
+Matplotlib
+
+Seaborn
+
+Scikit-learn
 seaborn
 
 matplotlib.pyplot
